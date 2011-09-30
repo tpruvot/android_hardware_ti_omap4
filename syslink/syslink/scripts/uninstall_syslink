@@ -1,0 +1,35 @@
+#!/bin/sh
+
+echo " "
+echo " "
+#uninstall dspbridge driver
+echo "uninstalling bridgedriver.ko"
+rmmod bridgedriver
+
+#uninstall bridge memory driver
+echo "uninstalling dspbridge.ko"
+rmmod dspbridge
+
+#uninstall syslink ipc driver
+echo "uninstalling syslink_ipc.ko"
+rmmod syslink_ipc
+
+#uninstall notify ducati driver
+echo "uninstalling notify_ducatidriver.ko"
+rmmod notify_ducatidriver
+
+#uninstall notify tesla driver
+echo "uninstalling notify_tesladriver.ko"
+rmmod notify_tesladriver
+
+#uninstall omap_notify driver
+echo "uninstalling omap_notify.ko"
+rmmod omap_notify
+
+#uninstall syslink proc4430 driver
+echo "uninstalling syslink_proc4430.ko"
+rmmod syslink_proc4430
+
+#uninstall syslink proc driver
+echo "uninstalling syslink_proc.ko"
+rmmod syslink_proc

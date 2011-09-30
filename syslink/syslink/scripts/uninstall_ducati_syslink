@@ -1,0 +1,27 @@
+#!/bin/sh
+
+echo " "
+echo " "
+#uninstall devh driver
+echo "uninstalling devh.ko"
+rmmod devh
+
+#uninstall devh44xx driver
+echo "uninstalling devh44xx.ko"
+rmmod devh44xx
+
+#uninstall syslink ipc driver
+echo "uninstalling syslink_ipc.ko"
+rmmod syslink_ipc
+
+#uninstall syslink proc4430 driver
+echo "uninstalling syslink_proc4430.ko"
+rmmod syslink_proc4430
+
+#uninstall syslink platform driver
+echo "uninstalling syslink_platform.ko"
+rmmod syslink_platform
+
+#uninstall syslink proc driver
+echo "uninstalling syslink_proc.ko"
+rmmod syslink_proc

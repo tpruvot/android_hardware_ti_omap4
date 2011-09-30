@@ -1,0 +1,73 @@
+Detailed description of each option of the test
+
+Option	Description
+1	Preview ,VGA,UYVY 
+2	Preview ,864X480,UYVY
+3	Preview ,QVGA,UYVY
+4	Preview ,800X600,UYVY
+5	Preview,176X 144, UYVY
+6	Preview,768X576,UYVY
+7	Preview ,128 X 96, UYVY
+8	Preview,64 X 64, UYVY 
+9	Preview,80X60, UYVY 
+10	Preview, 864X486,UYVY
+11	Preview ,720X480,UYVY
+41	Preview ,860X480,UYVY
+42	Preview ,640X480,UYVY
+43	Preview ,320X240,UYVY
+44	Preview ,800X600,UYVY
+45	Preview ,176X144,UYVY
+46	Preview ,768X576,UYVY
+47	Preview ,128X96,UYVY
+48	Preview ,64X64,UYVY
+49	Preview ,80X60,UYVY
+50	Preview ,864X486,UYVY
+51	Preview ,720X480,UYVY
+
+
+Option	Description
+12	Preview , 864X480,NV12
+13	Preview,VGA,NV12 
+14	Preview, QVGA,NV12
+15	Preview, 800X600,NV12
+16	Preview,176X144,NV12
+17	Preview ,768X576,NV12
+18	Preview ,128X96,NV12
+19	Preview ,64X64,NV12
+20	Preview ,80X60,NV12
+21	Preview ,864X486,NV12
+22	Preview ,720X480,NV12
+
+
+Option	Description (JPEG)
+130	Image Capture , 176 X 144
+131	Image Capture, 320, 240
+132	Image Capture, 768 X 576
+133	Image Capture,800X600
+134	Image Capture,1024 X 768
+135	Image Capture,128X128
+136	Image Capture,1600X1200
+137	Image Capture,1280X1024
+138	Image Capture,64 X64 
+139	Image Capture, 1152 X 768
+140	Image Capture,1920 X 1080
+141	Image Capture,1920 X 1020
+142	Image Capture,1280 X 720
+143	Image Capture,4032 X 3024
+
+
+Option	Description
+201	Video Capture, 176 X 144 NV12
+202	Video Capture, 320 X 240 NV12
+203	Video Capture, 640 X 480 NV12
+204	Video Capture, 768 X 576 NV12
+205	Video Capture, 800 X 600 NV12
+206	Video Capture, 1024 X 768 NV12
+207	Video Capture, 128 X 96 NV12
+208	Video Capture, 1600 X 1200 NV12
+209	Video Capture, 1280 X 1024 NV12
+210	Video Capture, 64 X 64 NV12
+211	Video Capture, 1920 X 1080 NV12
+212	Video Capture, 1920 X 1020 NV12
+213	Video Capture, 1280 X 720NV12
+

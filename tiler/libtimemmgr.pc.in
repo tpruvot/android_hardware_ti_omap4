@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: timemmgr
+Description: TI memory manager
+Version: @VERSION@
+Requires:
+Libs: -L${libdir} -ltimemmgr
+Cflags: -I${includedir}/timemmgr
+
+

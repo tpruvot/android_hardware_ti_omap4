@@ -1,0 +1,19 @@
+The build requires that certain libraries be copied into this folder from the
+CodeSourcery ARM toolchain.
+
+This folder can be used for copying certain system libraries required for
+building Syslink/Bridge.
+
+The following commands are provided for reference. Copy the desired libraries
+from the toolchain into this directory. ARM 2008Q3 toolchain is assumed to be
+installed in /data/omapts/linux/arm-tc/arm-2008q3. Please adjust the path in the
+below commands accordingly.
+
+Current example shows the libpthread.so and librt.so soft links to be created in 
+this folder. They can be created in target/lib folder as well.
+
+ln -s ../../lib/libpthread.so.0 libpthread.so
+ln -s ../../lib/librt.so.1 librt.so
+
+All the files in this folder need to be copied to the target root file system's
+/usr/lib folder for using with Syslink/Bridge.

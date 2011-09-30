@@ -1,0 +1,90 @@
+Need to check for the following before using autotools:
+=======================================================
+	Tools Prequisites:
+	------------------
+	1. Autoconf version: 2.61 and above.
+	2. Automake version: 1.9.6 and above.
+	3. libtool version : 1.5.6 and above.
+
+	Set the following envirnoment variables:
+	----------------------------------------
+	1. export ARCH=arm
+	2. export CROSS_COMPILE=arm-none-linux-gnueabi-
+	3. Point your shell(sh) to bash. It is assumed that the references to
+	   sh in this README documents is actually pointing to /bin/bash
+
+	To enable DEBUG Option:
+	----------------------
+	1. You can enable the DEBUG option by uncommenting the following line
+	   # ENABLE_DEBUG=--enable-debug in build_directions.sh file.
+	2. You can also enable the DEBUG option by entering
+	   ./configure --enable-debug.
+	   Note: please check for ./configure --help before running configure.
+
+Steps to Build SysLink:
+=======================
+1st Method:
+----------
+	Build directions:
+	-----------------
+	1. sh build_directions.sh --clean  --> for clean build.
+	2. sh build_directions.sh ---> for normal build.
+	3. Enter the Prefix path (This is the root of userspace syslink)
+	    (e.g., /omap_data/development/projects/userspace-syslink)
+	4. Enter the Tiler-Userspace Path
+	    (e.g., /omap_data/development/projects/tiler-userspace)
+	5. Enter the path to kernel-syslink (Optional)
+	    (e.g., /omap_data/development/projects/kernel-syslink)
+	6. Enter the Toolchain Path
+	    ( e.g., /omap_data/omapts/arm-2009q1-203/bin)
+	7. It will display the following options
+		1--------------> Build Syslink Only
+		Any other Option to exit from Build system
+
+		Enter your option:
+	8. If option 1 is chosen then
+	    a. First the libtimemmgr.so is built and installed in $(PREFIX)/target/lib
+	       folder.
+	    b. Second the SysLink APIs, daemons and samples will be built and
+	       installed in $(PREFIX)/target/lib and $(PREFIX)/target/syslink folder
+	       respectively.
+
+2nd Method:
+----------
+	Prequisites:
+	------------
+	1. Tiler library (libtimemmgr.so) needs to be built and installed first as
+	   SysLinkMemUtils module depends on the tiler code.
+	2. The Tiler library should have been built with autotools, and the
+	   pkgconfig folder exists in the appropriate folder. The required package
+	   details like  the include/memmgr are also assumed to be present in the
+	   appropriate target folder.
+
+	To build only SysLink:
+	---------------------
+	1. export PATH=<Toolchain Path>:$PATH
+	    (e.g., Toolchain path:/omap_data/omapts/arm-2009q1-203/bin)
+	2. cd syslink
+	3. sh bootstrap.sh
+	4. ./configure --host=arm-none-linux-gnueabi --prefix=<PREFIX PATH>
+	    --build=i686-pc-linux-gnu PKG_CONFIG_PATH=<PREFIX PATH>/target/lib/pkgconfig/
+	5. make PREFIX=<SYSLINK-PATH> KRNLSRC=<KERNEL-PATH> (Note: PREFIX-PATH is
+	   the root of the target file system, whereas SYSLINK-PATH is the root of
+	   the userspace syslink folder. The PREFIX and KRNLSRC variables are
+	   required only to build any kernel sample/module.)
+	6. make install (Note: the binaries and lib would be copied to the
+	   $PREFIX/bin and $PREFIX/lib folders respectively).
+	7. cd -
+
+Steps to build only the SysLink APIs:
+=====================================
+	1. export PATH=<Toolchain Path>:$PATH
+	    (e.g., Toolchain path:/omap_data/omapts/arm-2009q1-203/bin)
+	2. cd syslink
+	3. sh bootstrap.sh
+	4. ./configure --host=arm-none-linux-gnueabi --prefix=<PREFIX PATH>
+	    --build=i686-pc-linux-gnu
+	5. cd api
+	6. make clean
+	7. make
+	8. make install

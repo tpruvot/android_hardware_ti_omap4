@@ -1,0 +1,1 @@
+ make PREFIX=/vobs/WTSD_MultiCoreSW/MPU/Linux/notify/samples/ PROJROOT=/vobs/WTSD_MultiCoreSW/MPU/Linux/notify/samples/ clean

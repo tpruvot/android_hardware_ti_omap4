@@ -1,0 +1,136 @@
+Validating MemMgr
+
+    MemMgr tests are not persistently enumerated, so the test # in
+    memmgr test may vary from release to release.
+
+    You need to run the test with the "list" argument to list all the test
+    descriptions and the corresponding test numbers.
+
+        E.g. "memmgr_test list"
+
+    If you have access to the official test report, the details column lists
+    the test description (in the last line).  Match the test case description
+    to the last line of the cells in the Details column.
+
+    Negative MemMgr tests run multiple test cases, so they map to multiple rows
+    in the official test report.  Some of the test cases may not be available,
+    or may succeed even if the whole test failed/succeeded.
+
+    To ease the generation of the test report, a python script is provided that
+    will populate most of the test report:
+
+        run memmgr_test and pipe the output of the tests into a
+        file, e.g.:
+
+            memmgr_test > test.log
+
+        open UTR and select Tiler User Space worksheet
+        run this script by piping the test logs into the script, e.g. (you may
+        have to copy the log file from the target to a location that you can
+        access from the machine that has the UTR open.)
+
+            python fill_utr.py < test.log
+
+Latest List of test cases
+
+memmgr_test
+
+TEST #  1 - alloc_1D_test(4096, 0)
+TEST #  2 - alloc_2D_test(64, 64, PIXEL_FMT_8BIT)
+TEST #  3 - alloc_2D_test(64, 64, PIXEL_FMT_16BIT)
+TEST #  4 - alloc_2D_test(64, 64, PIXEL_FMT_32BIT)
+TEST #  5 - alloc_NV12_test(64, 64)
+TEST #  6 - map_1D_test(4096, 0)
+TEST #  7 - alloc_1D_test(176 * 144 * 2, 512)
+TEST #  8 - alloc_2D_test(176, 144, PIXEL_FMT_8BIT)
+TEST #  9 - alloc_2D_test(176, 144, PIXEL_FMT_16BIT)
+TEST # 10 - alloc_2D_test(176, 144, PIXEL_FMT_32BIT)
+TEST # 11 - alloc_NV12_test(176, 144)
+TEST # 12 - map_1D_test(176 * 144 * 2, 2048)
+TEST # 13 - alloc_1D_test(640 * 480 * 2, 0)
+TEST # 14 - alloc_2D_test(640, 480, PIXEL_FMT_8BIT)
+TEST # 15 - alloc_2D_test(640, 480, PIXEL_FMT_16BIT)
+TEST # 16 - alloc_2D_test(640, 480, PIXEL_FMT_32BIT)
+TEST # 17 - alloc_NV12_test(640, 480)
+TEST # 18 - map_1D_test(640 * 480 * 2, 0)
+TEST # 19 - alloc_1D_test(848 * 480 * 2, 0)
+TEST # 20 - alloc_2D_test(848, 480, PIXEL_FMT_8BIT)
+TEST # 21 - alloc_2D_test(848, 480, PIXEL_FMT_16BIT)
+TEST # 22 - alloc_2D_test(848, 480, PIXEL_FMT_32BIT)
+TEST # 23 - alloc_NV12_test(848, 480)
+TEST # 24 - map_1D_test(848 * 480 * 2, 0)
+TEST # 25 - alloc_1D_test(1280 * 720 * 2, 0)
+TEST # 26 - alloc_2D_test(1280, 720, PIXEL_FMT_8BIT)
+TEST # 27 - alloc_2D_test(1280, 720, PIXEL_FMT_16BIT)
+TEST # 28 - alloc_2D_test(1280, 720, PIXEL_FMT_32BIT)
+TEST # 29 - alloc_NV12_test(1280, 720)
+TEST # 30 - map_1D_test(1280 * 720 * 2, 0)
+TEST # 31 - alloc_1D_test(1920 * 1080 * 2, 0)
+TEST # 32 - alloc_2D_test(1920, 1080, PIXEL_FMT_8BIT)
+TEST # 33 - alloc_2D_test(1920, 1080, PIXEL_FMT_16BIT)
+TEST # 34 - alloc_2D_test(1920, 1080, PIXEL_FMT_32BIT)
+TEST # 35 - alloc_NV12_test(1920, 1080)
+TEST # 36 - map_1D_test(1920 * 1080 * 2, 0)
+TEST # 37 - neg_alloc_tests()
+TEST # 38 - neg_free_tests()
+TEST # 39 - neg_map_tests()
+TEST # 40 - neg_unmap_tests()
+TEST # 41 - neg_check_tests()
+TEST # 42 - page_size_test()
+TEST # 43 - maxalloc_2D_test(2500, 32, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 44 - maxalloc_2D_test(2500, 16, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 45 - maxalloc_2D_test(1250, 16, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 46 - maxalloc_2D_test(5000, 32, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 47 - maxalloc_2D_test(5000, 16, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 48 - maxalloc_2D_test(2500, 16, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 49 - alloc_2D_test(8193, 16, PIXEL_FMT_8BIT)
+TEST # 50 - alloc_2D_test(8193, 16, PIXEL_FMT_16BIT)
+TEST # 51 - alloc_2D_test(4097, 16, PIXEL_FMT_32BIT)
+TEST # 52 - alloc_2D_test(16384, 16, PIXEL_FMT_8BIT)
+TEST # 53 - alloc_2D_test(16384, 16, PIXEL_FMT_16BIT)
+TEST # 54 - alloc_2D_test(8192, 16, PIXEL_FMT_32BIT)
+TEST # 55 - !alloc_2D_test(16385, 16, PIXEL_FMT_8BIT)
+TEST # 56 - !alloc_2D_test(16385, 16, PIXEL_FMT_16BIT)
+TEST # 57 - !alloc_2D_test(8193, 16, PIXEL_FMT_32BIT)
+TEST # 58 - maxalloc_1D_test(4096, MAX_ALLOCS)
+TEST # 59 - maxalloc_2D_test(64, 64, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 60 - maxalloc_2D_test(64, 64, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 61 - maxalloc_2D_test(64, 64, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 62 - maxalloc_NV12_test(64, 64, MAX_ALLOCS)
+TEST # 63 - maxmap_1D_test(4096, MAX_ALLOCS)
+TEST # 64 - maxalloc_1D_test(176 * 144 * 2, MAX_ALLOCS)
+TEST # 65 - maxalloc_2D_test(176, 144, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 66 - maxalloc_2D_test(176, 144, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 67 - maxalloc_2D_test(176, 144, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 68 - maxalloc_NV12_test(176, 144, MAX_ALLOCS)
+TEST # 69 - maxmap_1D_test(176 * 144 * 2, MAX_ALLOCS)
+TEST # 70 - maxalloc_1D_test(640 * 480 * 2, MAX_ALLOCS)
+TEST # 71 - maxalloc_2D_test(640, 480, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 72 - maxalloc_2D_test(640, 480, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 73 - maxalloc_2D_test(640, 480, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 74 - maxalloc_NV12_test(640, 480, MAX_ALLOCS)
+TEST # 75 - maxmap_1D_test(640 * 480 * 2, MAX_ALLOCS)
+TEST # 76 - maxalloc_1D_test(848 * 480 * 2, MAX_ALLOCS)
+TEST # 77 - maxalloc_2D_test(848, 480, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 78 - maxalloc_2D_test(848, 480, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 79 - maxalloc_2D_test(848, 480, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 80 - maxalloc_NV12_test(848, 480, MAX_ALLOCS)
+TEST # 81 - maxmap_1D_test(848 * 480 * 2, MAX_ALLOCS)
+TEST # 82 - maxalloc_1D_test(1280 * 720 * 2, MAX_ALLOCS)
+TEST # 83 - maxalloc_2D_test(1280, 720, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 84 - maxalloc_2D_test(1280, 720, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 85 - maxalloc_2D_test(1280, 720, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 86 - maxalloc_NV12_test(1280, 720, MAX_ALLOCS)
+TEST # 87 - maxmap_1D_test(1280 * 720 * 2, MAX_ALLOCS)
+TEST # 88 - maxalloc_1D_test(1920 * 1080 * 2, MAX_ALLOCS)
+TEST # 89 - maxalloc_2D_test(1920, 1080, PIXEL_FMT_8BIT, MAX_ALLOCS)
+TEST # 90 - maxalloc_2D_test(1920, 1080, PIXEL_FMT_16BIT, MAX_ALLOCS)
+TEST # 91 - maxalloc_2D_test(1920, 1080, PIXEL_FMT_32BIT, MAX_ALLOCS)
+TEST # 92 - maxalloc_NV12_test(1920, 1080, 2)
+TEST # 93 - maxalloc_NV12_test(1920, 1080, MAX_ALLOCS)
+TEST # 94 - maxmap_1D_test(1920 * 1080 * 2, MAX_ALLOCS)
+TEST # 95 - star_tiler_test(1000, 10)
+TEST # 96 - star_tiler_test(1000, 30)
+TEST # 97 - star_test(100, 10)
+TEST # 98 - star_test(1000, 10)
+

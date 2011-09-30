@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: syslink
+Description: syslink
+Version: @VERSION@
+Requires:
+Libs: -L${libdir} -lsysmgr -ipc -lrcm -lsyslinknotify -lprocmgr
+Cflags: -I${includedir}/syslink -I${includedir}/syslink/ti/ipc
+
+

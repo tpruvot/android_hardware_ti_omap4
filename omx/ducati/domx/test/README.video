@@ -1,0 +1,69 @@
+Validating H264 Decode
+
+  1. load the ducati images: "syslink_daemon.out <full-path-to-sysm3-image> <full-path-to-appm3-image>".  E.g. 
+
+    syslink_daemon.out /24.3/Notify_MPUSYS_reroute_Test_Core0-L243-P2.xem3 /24.3/base_image_app_m3-p1.xem3
+
+  2. If you use Decoder_input.cfg, it must be in the current directory
+  (./Decoder_input.cfg).  Note the capitalization of the name.  Use the following
+  lines for this file
+
+    <input-file>
+    <width>
+    <height>
+    <color format> - this must be 3
+
+  3. run omx_h264dec_test
+
+    Press <Enter>
+
+    Press <1> <Enter> to use Decoder_input.cfg
+
+    Decoded NV12 frames will be in the file:
+    /patterns/output/test_bits_noRC_1.yuv-dec_out_linebyline
+
+Validating H264 Playback
+
+  1. load the ducati images: "syslink_daemon.out <full-path-to-sysm3-image> <full-path-to-appm3-image>".  E.g. 
+
+    syslink_daemon.out /24.3/Notify_MPUSYS_reroute_Test_Core0-L243-P2.xem3 /24.3/base_image_app_m3-p1.xem3
+
+  2. create a ./Decoder_input.cfg from the following lines:
+
+    <input-file>
+    <width>
+    <height>
+    <color format> - this must be 3
+
+  3. run omx_h264play_test
+
+Validating H264 Playback - frame by frame
+
+  1. load the ducati images: "syslink_daemon.out <full-path-to-sysm3-image> <full-path-to-appm3-image>".  E.g. 
+
+    syslink_daemon.out /24.3/Notify_MPUSYS_reroute_Test_Core0-L243-P2.xem3 /24.3/base_image_app_m3-p1.xem3
+
+  2. create a ./Decoder_input.cfg from the following lines:
+
+    <input-file>
+    <width>
+    <height>
+    <color format> - this must be 3
+
+  3. create a framesize file at /patterns/input/test_nobits_framedata.txt.
+  Each line should list the size of a complete frame in order.
+
+  4. run omx_h264play2_test
+
+Validating H264 Encoder - QCIF only
+
+  1. load the ducati images: "syslink_daemon.out <full-path-to-sysm3-image> <full-path-to-appm3-image>".  E.g. 
+
+    syslink_daemon.out /24.3/Notify_MPUSYS_reroute_Test_Core0-L243-P2.xem3 /24.3/base_image_app_m3-p1.xem3
+
+  2. run omx_h264enc_test
+
+    This will encode file "./input/foreman_p176x144_30fps_420pl_300fr_nv12.yuv"
+    into "./output/foreman_p176x144_20input_1output.264"
+
+
