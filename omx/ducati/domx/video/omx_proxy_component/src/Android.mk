@@ -5,6 +5,7 @@ LOCAL_CFLAGS += -D__H264_DEC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.H264D
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -12,6 +13,7 @@ LOCAL_CFLAGS += -D__MPEG4_DEC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.MPEG4D
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -19,6 +21,7 @@ LOCAL_CFLAGS += -D__VP6_DEC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.VP6D
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -26,6 +29,7 @@ LOCAL_CFLAGS += -D__VP7_DEC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.VP7D
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -33,6 +37,7 @@ LOCAL_CFLAGS += -D__H264_ENC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_enc.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.H264E
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -40,24 +45,28 @@ LOCAL_CFLAGS += -D__MPEG4_ENC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_enc.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.MPEG4E
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
 LOCAL_SRC_FILES:= \
 	omx_proxy_jpeg_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.IMAGE.JPEGD
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
 LOCAL_SRC_FILES:= \
 	omx_proxy_camera.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.CAMERA
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
 LOCAL_SRC_FILES:= \
 	omx_proxy_sample.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.MISC.SAMPLE
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)
 
 include $(LOCAL_PATH)/Config.mk
@@ -65,4 +74,5 @@ LOCAL_CFLAGS += -D__VID_DEC__ -D_OPENCORE
 LOCAL_SRC_FILES:= \
 	android_omx_proxy_dec.c
 LOCAL_MODULE:= libOMX.TI.DUCATI1.VIDEO.DECODER
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)

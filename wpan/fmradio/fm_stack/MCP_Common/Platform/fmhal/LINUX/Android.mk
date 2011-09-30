@@ -30,7 +30,7 @@ LOCAL_C_INCLUDES := \
                 $(LOCAL_PATH)/../../../inc \
 
 LOCAL_MODULE:=libfmhal
-LOCAL_MODULE_TAGS:=
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_STATIC_LIBRARY)
 

@@ -34,5 +34,6 @@ LOCAL_SHARED_LIBRARIES := \
 	libd2cmap
 
 LOCAL_MODULE:= libmemmgr_rpc
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_SHARED_LIBRARY)

@@ -49,8 +49,8 @@ LOCAL_C_INCLUDES := \
     $(PV_INCLUDES)
 
 -include $(PV_TOP)/Android_platform_extras.mk
-
 -include $(PV_TOP)/Android_system_extras.mk
+-include $(PV_TOP)/build_config/opencore_dynamic/Android_opencore_common.mk
 
 LOCAL_SHARED_LIBRARIES += libopencore_common
 

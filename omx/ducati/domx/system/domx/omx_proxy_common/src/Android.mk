@@ -34,5 +34,6 @@ LOCAL_SHARED_LIBRARIES := \
 		libomx_rpc
 
 LOCAL_MODULE:= libomx_proxy_common
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_SHARED_LIBRARY)

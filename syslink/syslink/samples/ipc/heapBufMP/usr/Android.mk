@@ -26,5 +26,6 @@ LOCAL_CFLAGS += -MD -pipe  -fomit-frame-pointer -Wall  -Wno-trigraphs -Werror-im
 #LOCAL_CFLAGS += -DSYSLINK_USE_DAEMON
 
 LOCAL_MODULE:= heapBufMPApp.out
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_EXECUTABLE)
