@@ -11,6 +11,6 @@ LOCAL_SHARED_LIBRARIES:= \
     libutils \
     libbinder
 
-#LOCAL_MODULE_TAGS := debug
 LOCAL_MODULE := libsyslink_ipc_listener
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_SHARED_LIBRARY)

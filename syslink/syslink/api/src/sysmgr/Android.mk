@@ -48,5 +48,6 @@ LOCAL_CFLAGS += -pipe -fomit-frame-pointer -Wall  -Wno-trigraphs -Werror-implici
 LOCAL_CFLAGS += -DSYSLINK_USE_SYSMGR
 LOCAL_CFLAGS += -DARM_TARGET -DC60_TARGET
 LOCAL_MODULE    := libsysmgr
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_SHARED_LIBRARY)

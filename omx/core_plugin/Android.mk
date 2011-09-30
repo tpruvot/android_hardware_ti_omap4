@@ -3,6 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := 01_Vendor_ti_omx.cfg
 LOCAL_MODULE := 01_Vendor_ti_omx.cfg
+LOCAL_MODULE_TAGS:= optional
 LOCAL_MODULE_CLASS := ETC
 include $(BUILD_PREBUILT)
 

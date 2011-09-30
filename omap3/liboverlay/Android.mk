@@ -21,13 +21,13 @@ LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SHARED_LIBRARIES := liblog libcutils libutils libbinder libmirror
 LOCAL_SRC_FILES := v4l2_utils.c MotOverlay.cpp
-LOCAL_C_INCLUDES := motorola/hal/hdmi/mirror/include
+#LOCAL_C_INCLUDES := motorola/hal/hdmi/mirror/include
 
 ifeq ($(TARGET_BOARD_PLATFORM),omap4)
 LOCAL_CFLAGS := -DTARGET_OMAP4
 endif
 LOCAL_MODULE := overlay.$(TARGET_BOARD_PLATFORM)
-#LOCAL_MODULE_TAGS:= optional
+LOCAL_MODULE_TAGS:= optional
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -37,6 +37,7 @@ LOCAL_CFLAGS := -mabi=aapcs-linux
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_SRC_FILES := v4l2_utils.c v4l2_test.c
 LOCAL_MODULE := v4l2_test
+LOCAL_MODULE_TAGS:= optional
 include $(BUILD_EXECUTABLE)
 endif
 
