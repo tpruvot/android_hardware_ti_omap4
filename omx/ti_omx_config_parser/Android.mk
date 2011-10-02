@@ -31,9 +31,20 @@ PV_INCLUDES := \
 	$(PV_TOP)/build_config/opencore_dynamic \
 	$(PV_TOP)/codecs_v2/omx/omx_common/src \
  	$(PV_TOP)/codecs_v2/omx/omx_common/include \
+ 	$(PV_TOP)/codecs_v2/omx/omx_queue/src \
+ 	$(PV_TOP)/codecs_v2/utilities/pv_config_parser/include/ \
  	$(PV_TOP)/extern_libs_v2/khronos/openmax/include \
  	$(PV_TOP)/pvmi/pvmf/include \
- 	$(PV_TOP)/oscl/oscl/osclutil/src \
+	$(PV_TOP)/oscl/oscl/osclbase/src \
+	$(PV_TOP)/oscl/oscl/osclerror/src \
+	$(PV_TOP)/oscl/oscl/osclio/src \
+	$(PV_TOP)/oscl/oscl/oscllib/src \
+	$(PV_TOP)/oscl/oscl/osclmemory/src \
+	$(PV_TOP)/oscl/oscl/osclproc/src \
+	$(PV_TOP)/oscl/oscl/osclregcli/src \
+	$(PV_TOP)/oscl/oscl/osclregsrv/src \
+	$(PV_TOP)/oscl/oscl/osclutil/src \
+	hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
 	$(TARGET_OUT_HEADERS)/$(PV_COPY_HEADERS_TO)
 
 LOCAL_CFLAGS :=   $(PV_CFLAGS)
@@ -50,7 +61,6 @@ LOCAL_C_INCLUDES := \
 
 -include $(PV_TOP)/Android_platform_extras.mk
 -include $(PV_TOP)/Android_system_extras.mk
--include $(PV_TOP)/build_config/opencore_dynamic/Android_opencore_common.mk
 
 LOCAL_SHARED_LIBRARIES += libopencore_common
 

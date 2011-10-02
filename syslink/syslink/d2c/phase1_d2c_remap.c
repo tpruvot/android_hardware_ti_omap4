@@ -289,7 +289,7 @@ void *tiler_assisted_phase1_D2CReMap(int num_blocks, DSPtr dsptrs[],
         /* query tiler driver for details on these blocks, such as
            width/height/len/fmt */
         __dump_block(buf.blocks + ix, "=(qb)=>", "");
-        res = ioctl(td, TILIOC_QUERY_BLK, buf.blocks + ix);
+        res = ioctl(td, TILIOC_QBLK, buf.blocks + ix);
         __dump_block(buf.blocks + ix, "<=(qb)=", "");
 
         if (NOT_I(res,==,0) || NOT_I(buf.blocks[ix].ssptr,!=,0))

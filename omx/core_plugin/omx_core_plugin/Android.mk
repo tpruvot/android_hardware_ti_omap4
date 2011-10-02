@@ -20,11 +20,26 @@ PV_INCLUDES := \
 	$(PV_TOP)/nodes/pvdownloadmanagernode/config/opencore \
 	$(PV_TOP)/pvmi/pvmf/include \
 	$(PV_TOP)/fileformats/mp4/parser/config/opencore \
-	$(PV_TOP)/oscl/oscl/config/android \
-	$(PV_TOP)/oscl/oscl/config/shared \
 	$(PV_TOP)/engines/author/include \
 	$(PV_TOP)/android/drm/oma1/src \
+	$(PV_TOP)/codecs_v2/omx/omx_mastercore/include \
+	$(PV_TOP)/codecs_v2/omx/omx_common/include \
+	$(PV_TOP)/codecs_v2/omx/omx_queue/src \
+	$(PV_TOP)/codecs_v2/omx/omx_proxy/src \
+	$(PV_TOP)/oscl/oscl/config/android \
+	$(PV_TOP)/oscl/oscl/config/shared \
+	$(PV_TOP)/oscl/oscl/osclbase/src \
+	$(PV_TOP)/oscl/oscl/osclerror/src \
+	$(PV_TOP)/oscl/oscl/osclio/src \
+	$(PV_TOP)/oscl/oscl/oscllib/src \
+	$(PV_TOP)/oscl/oscl/osclmemory/src \
+	$(PV_TOP)/oscl/oscl/osclproc/src \
+	$(PV_TOP)/oscl/oscl/osclregcli/src \
+	$(PV_TOP)/oscl/oscl/osclregsrv/src \
+	$(PV_TOP)/oscl/oscl/osclutil/src \
+	$(PV_TOP)/oscl/pvlogger/src \
 	$(PV_TOP)/build_config/opencore_dynamic \
+	hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
 	$(TARGET_OUT_HEADERS)/$(PV_COPY_HEADERS_TO)
 
 LOCAL_CFLAGS :=   $(PV_CFLAGS)
