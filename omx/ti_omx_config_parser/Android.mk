@@ -65,3 +65,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_SHARED_LIBRARIES += libopencore_common
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+include $(PV_TOP)/build_config/opencore_dynamic/Android_opencore_common.mk
+

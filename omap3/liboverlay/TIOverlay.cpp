@@ -972,6 +972,7 @@ void overlay_control_context_t::overlay_destroyOverlay(struct overlay_control_de
     int fd = overlayobj->getctrl_videofd();
     int linkfd = overlayobj->getctrl_linkvideofd();
     int index = overlayobj->getIndex();
+    int ret = 0;
 
     /* In case Surface Destroy happens first from SurfaceFlinger, remove constraint */
     if(overlayobj->take_constraint) {

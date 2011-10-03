@@ -21,9 +21,9 @@ LOCAL_C_INCLUDES += \
     $(LOCAL_PATH)/../../inc/HDRInterface \
     $(LOCAL_PATH)/../../inc \
     $(LOCAL_PATH)/../../inc/OMXCameraAdapter \
-    $(LOCAL_PATH)/../../../../../tiler/memmgr \
-    hardware/ti/omap4/omap3/libtiutils \
-    hardware/ti/omap4/omap3/liboverlay \
+    $(LOCAL_PATH)/../../../../tiler/memmgr \
+    $(LOCAL_PATH)/../../../libtiutils \
+    $(LOCAL_PATH)/../../../liboverlay \
     external/libxml2/include \
     external/icu4c/common \
     frameworks/base/include/utils \

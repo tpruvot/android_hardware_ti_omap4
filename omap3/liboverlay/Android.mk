@@ -19,9 +19,8 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils libutils libbinder libmirror
-LOCAL_SRC_FILES := v4l2_utils.c MotOverlay.cpp
-#LOCAL_C_INCLUDES := motorola/hal/hdmi/mirror/include
+LOCAL_SHARED_LIBRARIES := liblog libbinder libcutils libhardware libutils libui libsurfaceflinger_client
+LOCAL_SRC_FILES := v4l2_utils.c TIOverlay.cpp
 
 ifeq ($(TARGET_BOARD_PLATFORM),omap4)
 LOCAL_CFLAGS := -DTARGET_OMAP4

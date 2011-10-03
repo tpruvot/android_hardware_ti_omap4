@@ -150,18 +150,18 @@ LOCAL_SHARED_LIBRARIES:= \
     libicuuc \
     libcamera_client \
     libomx_rpc \
-    libhdr_interface \
     libhardware_legacy \
+    libhdr_interface
 
 LOCAL_C_INCLUDES += \
     bionic/libc/include \
-	frameworks/base/include/ui \
-	hardware/ti/omap4/omap3/liboverlay \
-	hardware/ti/omap4/omap3/libtiutils \
-	frameworks/base/include/utils \
-	hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
-	hardware/ti/omap4/omx/ducati/domx/system/mm_osal/inc \
-	$(LOCAL_PATH)/../../../../../../external/libxml2/include \
+    frameworks/base/include/ui \
+    hardware/ti/omap4/omap3/liboverlay \
+    hardware/ti/omap4/omap3/libtiutils \
+    frameworks/base/include/utils \
+    hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
+    hardware/ti/omap4/omx/ducati/domx/system/mm_osal/inc \
+    $(LOCAL_PATH)/../../../../../../external/libxml2/include \
 
 
 
@@ -207,13 +207,13 @@ LOCAL_SHARED_LIBRARIES:= \
 
 LOCAL_C_INCLUDES += \
     kernel/android-2.6.29/include \
-	frameworks/base/include/ui \
-	hardware/ti/omap4/omap3/liboverlay \
-	hardware/ti/omap4/omap3/libtiutils \
-	frameworks/base/include/utils \
-	hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
-	hardware/ti/omap4/omx/ducati/domx/system/mm_osal/inc \
-	$(LOCAL_PATH)/../../../../../../external/libxml2/include \
+    frameworks/base/include/ui \
+    hardware/ti/omap4/omap3/liboverlay \
+    hardware/ti/omap4/omap3/libtiutils \
+    frameworks/base/include/utils \
+    hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
+    hardware/ti/omap4/omx/ducati/domx/system/mm_osal/inc \
+    $(LOCAL_PATH)/../../../../../../external/libxml2/include \
 
 
 
@@ -241,7 +241,7 @@ LOCAL_C_INCLUDES += \
     frameworks/base/include/utils \
     hardware/ti/omap4/omx/ducati/domx/system/omx_core/inc \
     hardware/ti/omap4/omx/ducati/domx/system/mm_osal/inc \
-    $(LOCAL_PATH)/../../../../../../external/libxml2/include \
+    external/libxml2/include \
     $(LOCAL_PATH)/../inc/HDRInterface \
     vendor/arcsoft/HDRCapture/inc
 
@@ -266,7 +266,8 @@ endif
 
 include $(BUILD_EXECUTABLE)
 
-include $(LOCAL_PATH)/HDRInterface/Android.mk
+# [HASHCODE] FIXME: Disabled due to /vendor/arcsoft reference.  Copying phone file.
+#include $(LOCAL_PATH)/HDRInterface/Android.mk
 
 endif  # remove calibration for now 
 

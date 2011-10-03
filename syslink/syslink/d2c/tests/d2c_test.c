@@ -341,7 +341,7 @@ void check_xy(int td, MemAllocBlock *blk, int offset)
     memcpy(&cblk, blk, sizeof(struct tiler_block_info));
 
     cblk.ssptr += def_bpp(cblk.fmt) * offset;
-    A_I(ioctl(td, TILIOC_QUERY_BLK, &cblk),==,0);
+    A_I(ioctl(td, TILIOC_QBLK, &cblk),==,0);
     A_I(cblk.fmt,==,blk->pixelFormat);
     if (cblk.fmt == TILFMT_PAGE)
     {
@@ -362,7 +362,7 @@ void check_bad(int td, MemAllocBlock *blk, int offset)
     memcpy(&cblk, blk, sizeof(struct tiler_block_info));
 
     cblk.ssptr += def_bpp(cblk.fmt) * offset;
-    A_I(ioctl(td, TILIOC_QUERY_BLK, &cblk),==,0);
+    A_I(ioctl(td, TILIOC_QBLK, &cblk),==,0);
     A_I(cblk.fmt,==,TILFMT_INVALID);
     A_I(cblk.dim.len,==,0);
     A_I(cblk.stride,==,0);
@@ -418,7 +418,7 @@ int test_d2c(pixels_t width, pixels_t height, int N)
     {
         memcpy(txblk + ix, blk + ix, sizeof(*blk));
         dump_block(txblk + ix, "=(qb)=>", "");
-        A_I(ioctl(td, TILIOC_QUERY_BLK, txblk + ix),==,0);
+        A_I(ioctl(td, TILIOC_QBLK, txblk + ix),==,0);
         dump_block(txblk + ix, "<=(qb)=", "");
     }
 

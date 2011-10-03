@@ -53,8 +53,10 @@ extern "C"
 #include "overlay_common.h"
 #include "MotOverlay.h"
 
+#ifdef HAVE_LIBMIRROR
 #include "IMirrorIpc.h"
 #include "IMirrorIpcCB.h"
+#endif
 #include <binder/Binder.h>
 #include <binder/IServiceManager.h>
 #include <binder/ProcessState.h>

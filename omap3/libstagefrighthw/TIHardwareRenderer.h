@@ -55,8 +55,11 @@ public:
 
     Vector< sp<IMemory> > getBuffers() { return mOverlayAddresses; }
     bool setCallback(release_rendered_buffer_callback cb, void *c);
+    /* [HASH] Misdefined vs. VideoRenderer.h
     virtual void resizeRenderer(uint32_t width, uint32_t height, uint32_t buffercount);
-    //virtual void requestRendererClone(bool enable);
+    */
+    virtual void resizeRenderer(void* resize_params);
+    virtual void requestRendererClone(bool enable);
 
 private:
     sp<ISurface> mISurface;

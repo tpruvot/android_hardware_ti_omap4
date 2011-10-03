@@ -15,6 +15,7 @@
  */
 
 #define LOG_TAG "TIHardwareRenderer"
+#include <media/stagefright/VideoRenderer.h>
 #include <utils/Log.h>
 #include "TIHardwareRenderer.h"
 #include <media/stagefright/MediaDebug.h>
@@ -123,31 +124,26 @@ TIHardwareRenderer::TIHardwareRenderer(
     CHECK(mDecodedHeight > 0);
 
     int videoFormat = OVERLAY_FORMAT_CbYCrY_422_I;
-    if ((colorFormat == OMX_COLOR_FormatYUV420PackedSemiPlanar)||(colorFormat == OMX_COLOR_FormatYUV420SemiPlanar))
-   {
-    videoFormat = OVERLAY_FORMAT_YCbCr_420_SP;
-   }
-    else if(colorFormat == OMX_COLOR_FormatCbYCrY)
-   {
-   videoFormat =  OVERLAY_FORMAT_CbYCrY_422_I;
-   }
-    else if (colorFormat == OMX_COLOR_FormatYCbYCr)
-   {
-   videoFormat = OVERLAY_FORMAT_YCbYCr_422_I;
-   }
-    else if (colorFormat == OMX_COLOR_FormatYUV420Planar)
-   {
-#ifdef TARGET_OMAP4
-   videoFormat = OVERLAY_FORMAT_YCbCr_420_SP;
-#else
-    videoFormat = OVERLAY_FORMAT_YCbYCr_422_I;
-#endif
-   LOGI("Use YUV420_PLANAR -> YUV422_INTERLEAVED_UYVY converter or NV-12 converter needed");
+    if ((colorFormat == OMX_COLOR_FormatYUV420PackedSemiPlanar)||(colorFormat == OMX_COLOR_FormatYUV420SemiPlanar)) {
+        videoFormat = OVERLAY_FORMAT_YCbCr_420_SP;
     }
-    else
-   {
-   LOGI("Not Supported format, and no coverter available");
-   return;
+    else if(colorFormat == OMX_COLOR_FormatCbYCrY) {
+        videoFormat =  OVERLAY_FORMAT_CbYCrY_422_I;
+    }
+    else if (colorFormat == OMX_COLOR_FormatYCbYCr) {
+        videoFormat = OVERLAY_FORMAT_YCbYCr_422_I;
+    }
+    else if (colorFormat == OMX_COLOR_FormatYUV420Planar) {
+#ifdef TARGET_OMAP4
+        videoFormat = OVERLAY_FORMAT_YCbCr_420_SP;
+#else
+        videoFormat = OVERLAY_FORMAT_YCbYCr_422_I;
+#endif
+        LOGI("Use YUV420_PLANAR -> YUV422_INTERLEAVED_UYVY converter or NV-12 converter needed");
+    }
+    else {
+        LOGI("Not Supported format, and no coverter available");
+        return;
     }
 
     //IKSTABLEFIVE-7109  nahmed1 05/03/2011
@@ -219,53 +215,60 @@ TIHardwareRenderer::TIHardwareRenderer(
     mInitCheck = android::OK;
 }
 
-
+/* [HASH] Misdefined against VideoRenderer.h
 void TIHardwareRenderer::resizeRenderer(uint32_t width, uint32_t height, uint32_t buffercount) {
+*/
+void TIHardwareRenderer::resizeRenderer(void* resize_params) {
+    if (resize_params != NULL) {
+        render_resize_params* rrp = (render_resize_params*) resize_params;
+        uint32_t width = rrp->decoded_width;
+        uint32_t height = rrp->decoded_height;
+        uint32_t buffercount = rrp->buffercount;
+        LOGD("resizeRenderer %dx%d buff(%d)",width, height, buffercount);
+        //first check if the size is different or not
+        if ((mDecodedWidth != width) || (mDecodedHeight != height)) {
+            //update the renderer's new width and height
+            mDecodedWidth = width;
+            mDecodedHeight = height;
 
-    LOGD("resizeRenderer %dx%d buff(%d)",width, height, buffercount);
-    //first check if the size is different or not
-    if ((mDecodedWidth != width) || (mDecodedHeight != height)) {
-        //update the renderer's new width and height
-        mDecodedWidth = width;
-        mDecodedHeight = height;
-
-        //unmap and delete the heap space for the old buffers
-        sp<IMemory> mem;
-        mapping_data_t *data;
-        sp<IMemory> mem_tobe_deleted;
-        unsigned int sz = mOverlayAddresses.size();
-        if (mOverlay.get() != NULL) {
-            for (size_t i = 0; i < sz; ++i) {
-                mem_tobe_deleted = mOverlayAddresses[i];
-                mem_tobe_deleted.clear();
-                (mVideoHeaps[i].get())->dispose();
-                mVideoHeaps[i].clear();
+            //unmap and delete the heap space for the old buffers
+            sp<IMemory> mem;
+            mapping_data_t *data;
+            sp<IMemory> mem_tobe_deleted;
+            unsigned int sz = mOverlayAddresses.size();
+            if (mOverlay.get() != NULL) {
+                for (size_t i = 0; i < sz; ++i) {
+                    mem_tobe_deleted = mOverlayAddresses[i];
+                    mem_tobe_deleted.clear();
+                    (mVideoHeaps[i].get())->dispose();
+                    mVideoHeaps[i].clear();
+                }
+                mOverlayAddresses.clear();
             }
-            mOverlayAddresses.clear();
-        }
 
-        if(sz != buffercount){
-            mOverlay->setParameter(OVERLAY_NUM_BUFFERS, buffercount);
-        }
+            if(sz != buffercount){
+                mOverlay->setParameter(OVERLAY_NUM_BUFFERS, buffercount);
+            }
 
-        //resize the overlay for the new width and height
-        mOverlay->resizeInput(width, height);
-        /* For H263 Case and new width and height */
-        if((!mConstraint) &&
-           (mDisplayWidth > 1280 || mDisplayHeight > 720)) {
-           mConstraint = 1;
-           mOverlay->setParameter(TAKE_CONSTRAINT, mConstraint);
-        }
-        //create imem for the new buffers
-        for (size_t i = 0; i < (size_t)mOverlay->getBufferCount(); ++i) {
-            data = (mapping_data_t *)mOverlay->getBufferAddress((void *)i);
-            CHECK(data != NULL);
-            mVideoHeaps[i] = new MemoryHeapBase(data->fd,data->length, 0, data->offset);
-            mem = new MemoryBase(mVideoHeaps[i], 0, data->length);
-            CHECK(mem.get() != NULL);
-            LOGV("mem->pointer[%d] = %p", i, mem->pointer());
-            mOverlayAddresses.push(mem);
-            buffers_queued_to_dss[i] = 0;
+            //resize the overlay for the new width and height
+            mOverlay->resizeInput(width, height);
+            /* For H263 Case and new width and height */
+            if((!mConstraint) &&
+               (mDisplayWidth > 1280 || mDisplayHeight > 720)) {
+               mConstraint = 1;
+               mOverlay->setParameter(TAKE_CONSTRAINT, mConstraint);
+            }
+            //create imem for the new buffers
+            for (size_t i = 0; i < (size_t)mOverlay->getBufferCount(); ++i) {
+                data = (mapping_data_t *)mOverlay->getBufferAddress((void *)i);
+                CHECK(data != NULL);
+                mVideoHeaps[i] = new MemoryHeapBase(data->fd,data->length, 0, data->offset);
+                mem = new MemoryBase(mVideoHeaps[i], 0, data->length);
+                CHECK(mem.get() != NULL);
+                LOGV("mem->pointer[%d] = %p", i, mem->pointer());
+                mOverlayAddresses.push(mem);
+                buffers_queued_to_dss[i] = 0;
+            }
         }
     }
 }
@@ -539,16 +542,16 @@ bool TIHardwareRenderer::setCallback(release_rendered_buffer_callback cb, void *
 //         LOGE("Error Setting S3D params \n");
 // }
 
-// void TIHardwareRenderer::requestRendererClone(bool enable) {
-//     LOGD("requestRendererClone[%d]", enable);
-//     int clonefd = mISurface->requestOverlayClone(enable);
-//     //this one would return the duped fd for the clone device
-//     //set this with the data context
-//     mOverlay->setParameter(SET_CLONE_FD, clonefd);
-//     if (enable) {
-//         mOverlay->setCrop((uint32_t)mCropX, (uint32_t)mCropY, mDisplayWidth, mDisplayHeight);
-//     }
-// }
+void TIHardwareRenderer::requestRendererClone(bool enable) {
+   LOGD("requestRendererClone[%d]", enable);
+   int clonefd = mISurface->requestOverlayClone(enable);
+   //this one would return the duped fd for the clone device
+   //set this with the data context
+   mOverlay->setParameter(SET_CLONE_FD, clonefd);
+   if (enable) {
+       mOverlay->setCrop((uint32_t)mCropX, (uint32_t)mCropY, mDisplayWidth, mDisplayHeight);
+   }
+}
 
 }  // namespace android
 
